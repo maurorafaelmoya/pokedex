@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import PagePrincipal from '../components/PagePrincipal'
 import { Box, Button, Stack, Typography } from '@mui/material';
-import { getAllPokemon, getPicturePokemon } from '../config/axiosPokemon';
+import { getAllPokemon } from '../config/axiosPokemon';
 
 const AllPokemon = () => {
 
@@ -55,7 +55,7 @@ const AllPokemon = () => {
                             >
                                 <img style={{width:'70%', height:'100%'}} src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${initialNumber + number + 1}.png`} />
                             </Button>
-                            <Typography variant='h6' align='center'> {name}</Typography>
+                            <Typography variant='h6' align='center'> #{initialNumber + number + 1} - {name}</Typography>
                         </Stack>
                     </Box>    
             )
@@ -67,14 +67,15 @@ const AllPokemon = () => {
                     width={150}
                     sx= {{ m: 2, border: '2px solid gray'}}
                 >
-                    <Stack spacing={2}>
+                    <Stack >
+                        <small>#{initialNumber + number + 1} -</small>
                         <Button
                             style={{width:'100%', height:'100%'}} 
                             onClick={()=> getDataPokemon([number,url]) }
                             >
-                            <img style={{width:'70%', height:'100%'}} src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${initialNumber + number +1 }.png`} />
+                            <img style={{width:'65%', height:'100%'}} src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${initialNumber + number +1 }.png`} />
                         </Button>
-                        <Typography variant='h6' align='center'> {name}</Typography>
+                        <Typography variant='h6' align='center'>  {name}</Typography>
                     </Stack>
                 </Box>  
             )  

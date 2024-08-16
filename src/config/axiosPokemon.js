@@ -18,59 +18,25 @@ export const getAllPokemon = async (initialPokemon, finalPokemon ) => {
 }
 
 
-export const getPokemonByParams = async (initialNumber, finalNumber ) => {
+export const getPokemonByParams = async ( params ) => {
 
     
 
     try {
-        const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/?offset=${initialNumber}&limit=${finalNumber}`);
-        console.log(response);
+        const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${params}`);
+        const response1 = await axios.get(`https://pokeapi.co/api/v2/pokemon-form/${params}`);
+
+        console.log(response.data);
             
-        return {data: response, msg:'hecho' };
+        return {name: response.data.name, abilities: response.data.abilities, img: [response.data.sprites.front_default,response.data.sprites.back_default, response.data.sprites.front_shiny,response.data.sprites.back_shiny ], type: response1.data.types,  msg:'success' };
 
     } catch (error) {
         console.error(error);
 
-        return {}
+        return {data: null, msg:'error'}
     }
 
     
 }
 
 
-export const getPicturePokemon = async ( url ) => {
-
-    
-
-    try {
-        const response = await axios.get(url);
-            
-        return {data: response.data.sprites.front_default}
-
-    } catch (error) {
-        console.error(error);
-
-        return {}
-    }
-
-    
-}
-
-export const getDataPokemon = async ( url ) => {
-
-    
-
-    try {
-        const response = await axios.get(url);
-        console.log(response);
-            
-        return {data: response, msg:'hecho' };
-
-    } catch (error) {
-        console.error(error);
-
-        return {}
-    }
-
-    
-}

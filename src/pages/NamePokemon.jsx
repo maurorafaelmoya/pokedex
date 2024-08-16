@@ -1,36 +1,37 @@
 import React, { useState } from 'react'
 import PagePrincipal from '../components/PagePrincipal'
 import { Button, Stack, TextField, Typography } from '@mui/material';
-import { useFetch } from '../hooks/useFetch';
+import { getPokemonByParams } from '../config/axiosPokemon';
+import CardPokemon from '../components/CardPokemon';
 
 const NamePokemon = () => {
 
     const [pokemon, setPokemon] = useState('')
+    const [pokemonData, setPokemonData] = useState('')
     
 
     const handleSend = async () =>{
-        console.log(pokemon)
         if(pokemon=== ''){
             alert('Faltan los datos')
             return
         }
+        const data = await getPokemonByParams(pokemon);
 
-        const {data, hasError, isLoading } = useFetch(`https://pokeapi.co/api/v2/pokemon/${pokemon}`);
-        console.log(data)
+        setPokemonData(data)
 
-        console.log('one search')
     }
 
     return (
         <PagePrincipal>
             <Stack spacing={2}>
-                <Typography variant='h6'> Busqueda de pokemon por nombre </Typography>
+                <Typography variant='h6'> Busqueda de pokemon por nombre o número </Typography>
                 <hr/>
                 <TextField 
                     id="outlined-basic" 
-                    label="Nombre pokemon" 
+                    label="Nombre o número de pokemon" 
                     variant="outlined" 
                     value={pokemon}
+                    type='text'
                     onChange={(event)=> setPokemon(event.target.value) }
                     />
                 <Button 
@@ -39,9 +40,11 @@ const NamePokemon = () => {
                     >
                         Buscar
                 </Button>
+
+                {pokemonData && <CardPokemon data={pokemonData} /> } 
             </Stack>
         </PagePrincipal>
     )
 }
 
-export default NamePokemon
+export default NamePokemon;
