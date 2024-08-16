@@ -1,12 +1,12 @@
 import React from 'react'
 import PagePrincipal from '../components/PagePrincipal'
 
-const NumberPokemon = () => {
+const TypePokemon = () => {
     return (
         <PagePrincipal>
-            <div>NumberPokemon</div>
+            <div>TypePokemon</div>
         </PagePrincipal>
     )
 }
 
-export default NumberPokemon
+export default TypePokemon

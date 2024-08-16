@@ -12,7 +12,7 @@ const AppWithRouter = () => (
       <Route path="/" element={<Navigate to="/allPokemon" />} />
       <Route path="/allPokemon" element={<AllPokemon />} />
       <Route path="/namePokemon" element={<NamePokemon />} />
-      <Route path="/numberPokemon" element={<NumberPokemon />} />
+      <Route path="/typePokemon" element={<NumberPokemon />} />
     </Routes>
   </BrowserRouter>
 );
