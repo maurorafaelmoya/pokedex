@@ -13,7 +13,7 @@ const MyAppBar = () => {
         {
             name: 'Busqueda por nombre de pokemon',
             id:2,
-            to:'/namePokemon'
+            to:'/nameNumberPokemon'
         },
         {
             name: 'Tipo de pokemones',

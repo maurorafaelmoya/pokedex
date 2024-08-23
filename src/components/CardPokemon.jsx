@@ -4,10 +4,8 @@ import React, { useState } from 'react'
 const CardPokemon = (props) => {
 
     const { name, abilities, img, type} = props.data
-    console.log(abilities)
     const [number, setNumber] = useState(0)
 
-    console.log(img[0])
 
     return (
         <>
@@ -30,7 +28,9 @@ const CardPokemon = (props) => {
 
                     <ol>
                         {abilities.map(index =>(
-                            <li >{index.ability.name}</li>
+                            <li >
+                                {index.ability.name}
+                            </li>
                         ))}
                     </ol>
 

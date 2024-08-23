@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
-import NamePokemon from './pages/NamePokemon';
-import NumberPokemon from './pages/NumberPokemon';
 import AllPokemon from './pages/AllPokemon';
+import NameNumberPokemon from './pages/NameNumberPokemon';
+import TypePokemon from './pages/TypePokemon';
 
 // La función App solo incluye un <Routes> para manejar el enrutamiento
 const AppWithRouter = () => (
@@ -11,8 +11,8 @@ const AppWithRouter = () => (
     <Routes>
       <Route path="/" element={<Navigate to="/allPokemon" />} />
       <Route path="/allPokemon" element={<AllPokemon />} />
-      <Route path="/namePokemon" element={<NamePokemon />} />
-      <Route path="/typePokemon" element={<NumberPokemon />} />
+      <Route path="/nameNumberPokemon" element={<NameNumberPokemon />} />
+      <Route path="/typePokemon" element={<TypePokemon />} />
     </Routes>
   </BrowserRouter>
 );

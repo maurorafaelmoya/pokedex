@@ -11,7 +11,7 @@ const AllPokemon = () => {
 
 
     useEffect(() => {
-        getPokemon(initialNumber,20)
+        getPokemon(initialNumber,20) 
     }, [initialNumber])
 
     
@@ -24,10 +24,7 @@ const AllPokemon = () => {
     }
 
     const getDataPokemon = (array) =>{
-        console.log(array[0])
         setSelected(array[0])
-
-
     }
 
     const previousPokemon = () => {

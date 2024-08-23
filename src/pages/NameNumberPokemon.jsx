@@ -1,23 +1,33 @@
 import React, { useState } from 'react'
 import PagePrincipal from '../components/PagePrincipal'
-import { Button, Stack, TextField, Typography } from '@mui/material';
+import { Alert, Button, Stack, TextField, Typography } from '@mui/material';
 import { getPokemonByParams } from '../config/axiosPokemon';
 import CardPokemon from '../components/CardPokemon';
 
-const NamePokemon = () => {
+const NameNumberPokemon = () => {
 
     const [pokemon, setPokemon] = useState('')
     const [pokemonData, setPokemonData] = useState('')
+    const [msg, setMsg] = useState('')
+    const [severitity, setSeverity] = useState('')
     
 
     const handleSend = async () =>{
+        setMsg('')
+        setSeverity('')
+
         if(pokemon=== ''){
             alert('Faltan los datos')
             return
         }
         const data = await getPokemonByParams(pokemon);
 
-        setPokemonData(data)
+        setMsg(data.msg)
+        setSeverity(data.severity)
+
+        if(data.severity === 'success'){
+            setPokemonData(data)
+        }
 
     }
 
@@ -26,6 +36,7 @@ const NamePokemon = () => {
             <Stack spacing={2}>
                 <Typography variant='h6'> Busqueda de pokemon por nombre o número </Typography>
                 <hr/>
+                {msg && <Alert severity={severitity}>{msg} </Alert> }
                 <TextField 
                     id="outlined-basic" 
                     label="Nombre o número de pokemon" 
@@ -47,4 +58,4 @@ const NamePokemon = () => {
     )
 }
 
-export default NamePokemon;
+export default NameNumberPokemon;
